@@ -3,17 +3,17 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: jreleaser/buildozer-action@v1
+        uses: herbertopre/buildozer-action@v1
         with:
           workdir: .
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: my-app-apk
+          name: package
           path: bin/*.apk
